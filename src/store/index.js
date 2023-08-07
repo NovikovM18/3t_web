@@ -2,18 +2,18 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    sn: ''
+    first: 'first_default'
   },
   getters: {
   },
   mutations: {
-    setN(state, payload) {
-      state.sn = payload;
+    SET_FIRST(state, payload) {
+      state.first = payload;
     }
   },
   actions: {
-    setN(context, payload) {
-      context.commit('setN', payload);
+    setFirst(context, payload) {
+      context.commit('SET_FIRST', payload);
     }
 
   },
