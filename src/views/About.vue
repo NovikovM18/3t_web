@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div id="about">
     <el-icon><Clock color="#409EFC"/></el-icon>
     <h1>{{ storeN }}</h1>
     <form @submit.prevent="submit">
       <el-input
-        v-model="nn"
+        v-model="n"
         maxlength="30"
         placeholder="Please input nn"
         show-word-limit
@@ -16,24 +16,23 @@
         type="primary" 
         @click="submit"
         icon="Star"
-        :disabled="!nn"
-      >Primary
+        :disabled="!n"
+      >
+        Primary
       </el-button>
 
     </form>
   </div>
-
 </template>
 
 <script>
-import Alert from '../components/shared/Alert.vue'
 import { ElNotification } from 'element-plus'
 
 export default {
-  name: 'Alert',
-  components: { Alert },
+  name: 'About',
+  components: { },
   data: () => ({
-    nn: '',
+    n: '',
   }),
   // data() {
   //   return {
@@ -41,7 +40,9 @@ export default {
   //     nn: ''
   //   }
   // },
-  mounted() {},
+  mounted() {
+    
+  },
   computed: {
     storeN() {
       return this.$store.state.first;
@@ -49,15 +50,15 @@ export default {
   },
   methods: {
     submit() {
-      this.$store.dispatch('setFirst', this.nn);
+      this.$store.dispatch('setFirst', this.n);
   
       ElNotification({
         title: 'Success',
-        message: this.nn,
+        message: this.n,
         type: 'success',
       })
 
-      this.nn = '';
+      this.n = '';
 
     }
   }
@@ -66,5 +67,7 @@ export default {
 </script>
 
 <style lang="scss">
-  
+  #about {
+    height: 200vh;
+  }
 </style>

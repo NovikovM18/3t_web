@@ -1,26 +1,17 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">home</router-link> |
-      <router-link to="/about">about</router-link>
-    </nav>
+    <Header />
     <router-view/>
   </div>
 </template>
 
 <script>
-  export default {}
+  import Header from './components/Header.vue'
+
+  export default {
+    components: { Header }
+  }
 </script>
 
 <style lang="scss">
-  #app {
-    nav {
-      padding: 36px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-    }
-
-  }
 </style>
