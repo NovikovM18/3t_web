@@ -1,0 +1,28 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  @font-face {
+    font-family: 'Ysabeau';
+    src: local('Ysabeau'),
+    url(../assets/fonts/YsabeauInfant-VariableFont_wght.ttf) format('truetype');
+  }
+}
+
+body {
+  font-family: 'Ysabeau';
+  
+}
+
+a {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #909399;
+
+  &.router-link-exact-active {
+    color: #67C23A;
+  }
+}
