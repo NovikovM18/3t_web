@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -14,4 +14,7 @@
 </script>
 
 <style lang="scss">
+  #app {
+    background-color: #f3f3f3;
+  }
 </style>

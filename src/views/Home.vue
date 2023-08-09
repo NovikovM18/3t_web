@@ -1,36 +1,88 @@
 <template>
-  <div id="home">
-    <img src="@/assets/images/3t_logo.png" alt="logo" >
-    <img id="c" src="@/assets/images/pngfind.com-shooting-stars-png-48145.png" alt="">
+  <div id="home" class="container">
+    <el-icon><Clock color="#409EFC"/></el-icon>
+    <h1>{{ storeN }}</h1>
+
+
+    <form @submit.prevent="submit">
+      <el-input
+        v-model="n"
+        maxlength="30"
+        placeholder="Please input nn"
+        show-word-limit
+        type="text"
+      />
+
+      <el-button 
+        plain  
+        type="primary" 
+        @click="submit"
+        icon="Star"
+        :disabled="!n"
+      >
+        Primary
+      </el-button>
+
+    </form>
+    
+
+
   </div>
 </template>
 
 <script>
+import { ElNotification } from 'element-plus'
+import { supabase } from '@/supabse'
 
 export default {
   name: 'Home',
-  components: {},
+  components: { },
   data: () => ({
-    deg: 0,
-    int: null
+    n: '',
   }),
-  created() {},
+  // data() {
+  //   return {
+  //     name: 'woohoo',
+  //     nn: ''
+  //   }
+  // },
   mounted() {
-    console.log('mount');
-    this.int = setInterval(this.rotateCircle, 300);
+    this.getCountries();
+    
   },
-  unmounted() {
-    console.log('unmount');
-    clearInterval(this.int);
-    this.int = null;
+  computed: {
+    storeN() {
+      return this.$store.state.data.first;
+    },
   },
   methods: {
-    rotateCircle() {
-      this.deg++;
-      document.getElementById('c').style.transform = 'rotate(' + this.deg + 'deg)';
-      console.log(this.deg);
+    async getCountries() {
+      const { data, error } = await supabase.from('countries').select()
+      console.log(data);
+      if (error) {
+        ElNotification({
+          title: 'Error',
+          message: error.message,
+          type: 'error',
+        })
+      }
     },
+
+
+    submit() {
+      this.$store.dispatch('setFirst', this.n);
+  
+      ElNotification({
+        title: 'Success',
+        message: `new stor val = ${this.n}`,
+        type: 'success',
+      })
+
+      this.n = '';
+
+    }
   }
+  
 
 }
 </script>
@@ -38,6 +90,6 @@ export default {
 <style lang="scss">
 #c {
   width: 200px;
-  transition: 1000ms;
+  transition: 10000ms;
 }
 </style>

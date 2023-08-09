@@ -1,66 +1,35 @@
 <template>
-  <div id="about">
-    <el-icon><Clock color="#409EFC"/></el-icon>
-    <h1>{{ storeN }}</h1>
-    <form @submit.prevent="submit">
-      <el-input
-        v-model="n"
-        maxlength="30"
-        placeholder="Please input nn"
-        show-word-limit
-        type="text"
-      />
-
-      <el-button 
-        plain  
-        type="primary" 
-        @click="submit"
-        icon="Star"
-        :disabled="!n"
-      >
-        Primary
-      </el-button>
-
-    </form>
+  <div id="about" class="container">
+    <img id="c" src="@/assets/images/pngfind.com-shooting-stars-png-48145.png" alt="">
+    <img src="@/assets/images/3t_logo.png" alt="logo" >
   </div>
 </template>
 
 <script>
-import { ElNotification } from 'element-plus'
+
 
 export default {
   name: 'About',
-  components: { },
+  components: {},
   data: () => ({
-    n: '',
+    deg: 0,
+    int: null
   }),
-  // data() {
-  //   return {
-  //     name: 'woohoo',
-  //     nn: ''
-  //   }
-  // },
+  created() {},
   mounted() {
-    
+    console.log('mount');
+    this.int = setInterval(this.rotateCircle, 1000);
   },
-  computed: {
-    storeN() {
-      return this.$store.state.first;
-    },
+  unmounted() {
+    console.log('unmount');
+    clearInterval(this.int);
+    this.int = null;
   },
   methods: {
-    submit() {
-      this.$store.dispatch('setFirst', this.n);
-  
-      ElNotification({
-        title: 'Success',
-        message: this.n,
-        type: 'success',
-      })
-
-      this.n = '';
-
-    }
+    rotateCircle() {
+      this.deg+=10;
+      document.getElementById('c').style.transform = 'rotate(' + this.deg + 'deg)';
+    },
   }
 
 }
@@ -69,5 +38,10 @@ export default {
 <style lang="scss">
   #about {
     height: 200vh;
+ 
+    #c {
+      width: 400px;
+      transition: 50s;
+    }
   }
 </style>

@@ -27,16 +27,20 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../styles/vars.scss';
+  
   #header {
     position: sticky;
     top: 0;
     padding: 1rem 1rem;
-    z-index: 999;
+    height: $headerHeight;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     backdrop-filter: blur(12px);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    z-index: 999;
 
     .logo {
       width: 196px;

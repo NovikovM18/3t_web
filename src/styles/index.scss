@@ -20,8 +20,7 @@ body {
   scrollbar-width: thin;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f2f2f2;
-
+  
   &::-webkit-scrollbar {
     width: 8px;
     background: transparent;
@@ -37,12 +36,16 @@ a {
   font-weight: bold;
   color: $gray;
   transition: color 255ms;
-
+  
   &.router-link-exact-active {
     color: $blue;
   }
 }
 
 .container {
-
+  padding: 12px 36px;
+  width: 100%;
+  min-height: calc(100vh - $headerHeight);
+  background-color: #fafafa;
+  
 }
