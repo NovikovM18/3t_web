@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <router-link to="/">
-      <img class="logo" alt="logo" src="../assets/images/3t_logo.png">
+      <img class="logo" alt="logo" src="../assets/images/logo.png">
     </router-link>
 
     <nav class="nav">
@@ -43,7 +43,8 @@ export default {
     z-index: 999;
 
     .logo {
-      width: 196px;
+      width: 48px;
+      animation: rotation 60s linear 0s infinite;
     }
 
     .nav {
@@ -55,9 +56,20 @@ export default {
     }
 
     .actions {
-      width: 196px;
+      width: 48px;
     }
 
+  }
+
+
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   
 </style>
