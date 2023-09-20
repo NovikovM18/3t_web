@@ -50,6 +50,16 @@
       </div>
     </form>
 
+    <div class="actions">
+      <button
+        type="button"
+        class="button button_primary" 
+        @click="() => {$router.push('/login/signup')}"
+      >
+        sign up
+      </button>
+    </div>
+
   </div>
 </template>
 
@@ -106,9 +116,7 @@ export default {
         };
         if (res.data.session && res.data.user) {
           this.$store.dispatch('setUser', res.data);
-          this.getCurrentUser(res.data.user.id);
-          
-          // this.reset();
+          this.getCurrentUser(res.data.user.id);          
         };
       })
     },
@@ -143,6 +151,13 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    .actions {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 144px;
+    }
   }
   
 </style>

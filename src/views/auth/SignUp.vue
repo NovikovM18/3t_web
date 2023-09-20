@@ -1,7 +1,7 @@
 <template>
-  <!-- <div id="signup">
+  <div id="signup">
 
-    <form v-if="!isDone" @keyup.enter="signUp">
+    <!-- <form v-if="!isDone" @keyup.enter="signUp">
       <el-input
         v-model="form.email"
         type="email"
@@ -48,18 +48,17 @@
 
     <div v-if="isDone" class="done">
       <h1>Please, check you email</h1>
-    </div>
+    </div> -->
 
-    <el-button
-      v-if="!isDone" 
-      plain  
-      type="primary" 
+    <button
+      type="button"
+      class="button button_primary" 
       @click="() => {$router.push('/login/signin')}"
     >
       sign in
-    </el-button>
+    </button>
 
-  </div> -->
+  </div>
 </template>
 
 <script>
