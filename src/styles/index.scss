@@ -16,6 +16,7 @@ html {
 
 body {
   font-family: 'Ysabeau';
+  color: $gray_dark;
   text-rendering: optimizeLegibility;
   scrollbar-width: thin;
   -webkit-font-smoothing: antialiased;
@@ -31,21 +32,165 @@ body {
   }
 }
 
+#app {
+  background-color: #f3f3f3;
+}
+
+.container {
+  position: relative;
+  padding: 36px;
+  width: 100%;
+  min-height: calc(100vh - $headerHeight);
+  background-color: #fefefe;
+}
+
 a {
   font-weight: bold;
-  color: $gray;
+  color: $gray_dark;
   transition: color 255ms;
   text-decoration-line: none;
-  
-  &.router-link-exact-active {
+  user-select: none; 
+
+  &.router-link-active {
     color: $blue;
   }
 }
 
-.container {
-  padding: 12px 36px;
-  width: 100%;
-  min-height: calc(100vh - $headerHeight);
-  background-color: #fafafa;
+.form {
+  min-width: 366px;
+  width: 80%;
+  max-width: 588px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &_item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    label {
+      min-width: 102px;
+      font-weight: 500;
+      font-size: 18px
+    }
+
+    .show {
+      position: absolute;
+      right: 4px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
   
+  &_actions {
+    margin-top: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
+
+.input {
+  padding: 0 4px;
+  width: 100%;
+  height: 32px;
+  font-family: 'Ysabeau';
+  font-size: 18px;
+  color: $gray_dark;
+  border: 1px solid $gray;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px, rgba(0, 0, 0, 0.23) 0px 1px 2px;
+  transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:focus-visible {
+    outline: none; 
+  }
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+  &:focus {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+  &::placeholder {
+    color: $gray;
+  }
+  &:disabled {
+    color: $red;
+  }
+  
+  &_select {
+    cursor: pointer;
+    &__default {
+      color: $gray;
+    }
+    .option {
+      &:hover {
+        background-color: chartreuse;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &_ta {
+    // min-height: 36px;
+    overflow: visible;
+  }
+
+  &_cb {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+}
+
+
+.dp__input {
+  height: 32px;
+  font-family: 'Ysabeau';
+  font-size: 18px;
+  color: $gray_dark;
+  border: 1px solid $gray;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px, rgba(0, 0, 0, 0.23) 0px 1px 2px;
+  transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+}
+
+.button {
+  height: 36px;
+  min-width: 112px;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Ysabeau';
+  font-weight: 500;
+  font-size: 18px;
+  color: $gray_dark;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px, rgba(0, 0, 0, 0.23) 0px 1px 2px;
+  transition: all .2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:hover {
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  &_primary {
+    background: $blue;
+  }
+  &_success {
+    background: $green;
+  }
+  &_cancel {
+    background: $red;
+  }
+  &_warn {
+    background: $yellow;
+  }
 }
